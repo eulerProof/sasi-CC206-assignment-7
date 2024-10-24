@@ -46,6 +46,12 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
   // or store each value in the state
   int firstAddNum = 0;
   int secondAddNum = 0;
+  int subfirstAddNum = 0;
+  int subsecondAddNum = 0;
+  int multfirstAddNum = 0;
+  int multsecondAddNum = 0;
+  int divfirstAddNum = 0;
+  int divsecondAddNum = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -126,7 +132,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                   // update the firstAddNum state
                   onChanged: (value) {
                     setState(() {
-                      firstAddNum = int.parse(value);
+                      subfirstAddNum = int.parse(value);
                     });
                   },
                 ),
@@ -139,7 +145,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                   decoration: InputDecoration(labelText: "Second Number"),
                   onChanged: (value) {
                     setState(() {
-                      secondAddNum = int.parse(value);
+                      subsecondAddNum = int.parse(value);
                     });
                   },
                 ),
@@ -152,7 +158,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                 icon: Icon(Icons.remove),
                 onPressed: () {
                     setState(() {
-                      difference = firstAddNum - secondAddNum;
+                      difference = subfirstAddNum - subsecondAddNum;
                     });
                 } 
               ),
@@ -184,7 +190,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                   // update the firstAddNum state
                   onChanged: (value) {
                     setState(() {
-                      firstAddNum = int.parse(value);
+                      multfirstAddNum = int.parse(value);
                     });
                   },
                 ),
@@ -197,7 +203,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                   decoration: InputDecoration(labelText: "Second Number"),
                   onChanged: (value) {
                     setState(() {
-                      secondAddNum = int.parse(value);
+                      multsecondAddNum = int.parse(value);
                     });
                   },
                 ),
@@ -210,7 +216,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                 icon: Icon(Icons.clear),
                 onPressed: () {
                     setState(() {
-                      product = firstAddNum * secondAddNum;
+                      product = multfirstAddNum * multsecondAddNum;
                     });
                 } 
               ),
@@ -242,7 +248,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                   // update the firstAddNum state
                   onChanged: (value) {
                     setState(() {
-                      firstAddNum = int.parse(value);
+                      divfirstAddNum = int.parse(value);
                     });
                   },
                 ),
@@ -255,7 +261,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                   decoration: InputDecoration(labelText: "Second Number"),
                   onChanged: (value) {
                     setState(() {
-                      secondAddNum = int.parse(value);
+                      divsecondAddNum = int.parse(value);
                     });
                   },
                 ),
@@ -271,7 +277,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                 onPressed: () {
                     setState(() {
                       
-                      quotient = firstAddNum ~/ secondAddNum;
+                      quotient = divfirstAddNum ~/ divsecondAddNum;
                       
                     
                     });
