@@ -31,10 +31,18 @@ class CalculatorScreen extends StatefulWidget {
 class _CalculatorScreenState extends State<CalculatorScreen> {
   // manage the sum section
   int sum = 0;
-  String operation = " + ";
+  int difference = 0;
+  int product = 0;
+  int quotient = 0;
   // either use a TextEditingController for each input field to get the value
   TextEditingController add1Controller = TextEditingController();
   TextEditingController add2Controller = TextEditingController();
+  TextEditingController add3Controller = TextEditingController();
+  TextEditingController add4Controller = TextEditingController();
+  TextEditingController add5Controller = TextEditingController();
+  TextEditingController add6Controller = TextEditingController();
+  TextEditingController add7Controller = TextEditingController();
+  TextEditingController add8Controller = TextEditingController();
   // or store each value in the state
   int firstAddNum = 0;
   int secondAddNum = 0;
@@ -64,7 +72,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                 ),
               ),
              
-              Text(operation),
+              Text(" + "),
               Expanded(
                 child: TextField(
                   controller: add2Controller,
@@ -85,7 +93,6 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                 onPressed: () {
                     setState(() {
                       sum = firstAddNum + secondAddNum;
-                      operation = " + ";
                     });
                 } 
               ),
@@ -109,63 +116,184 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
 
           // 3.c - Add the other operations
           // Minus Row
-          Row (
-          children: [
-            IconButton.outlined(
-                
+         Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Expanded(
+                child: TextField(
+                  controller: add3Controller,
+                  decoration: InputDecoration(labelText: "First Number"),
+                  // update the firstAddNum state
+                  onChanged: (value) {
+                    setState(() {
+                      firstAddNum = int.parse(value);
+                    });
+                  },
+                ),
+              ),
+             
+              Text(" - "),
+              Expanded(
+                child: TextField(
+                  controller: add4Controller,
+                  decoration: InputDecoration(labelText: "Second Number"),
+                  onChanged: (value) {
+                    setState(() {
+                      secondAddNum = int.parse(value);
+                    });
+                  },
+                ),
+              ),
+
+              Text(' = $difference   '),
+              
+              // 3.a Add an IconButton here
+              IconButton.outlined(
                 icon: Icon(Icons.remove),
                 onPressed: () {
                     setState(() {
-                      sum = firstAddNum - secondAddNum;
-                      operation = " - ";
+                      difference = firstAddNum - secondAddNum;
                     });
                 } 
-              ),            
-          ] 
+              ),
+
+              // b.b Add an button here
+              TextButton(
+                style: TextButton.styleFrom(
+                  textStyle: const TextStyle(fontSize: 10),
+                ),
+                onPressed: () {
+                    setState(() {
+                      add3Controller.clear();
+                      add4Controller.clear();
+                      difference = 0;
+                    });
+                }, 
+                child: Text("Clear Contents"),
+              ),              
+            ],
           ),
           // Multiplication Row
-          Row (
-          children: [
-            IconButton.outlined(
-                
+         Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Expanded(
+                child: TextField(
+                  controller: add5Controller,
+                  decoration: InputDecoration(labelText: "First Number"),
+                  // update the firstAddNum state
+                  onChanged: (value) {
+                    setState(() {
+                      firstAddNum = int.parse(value);
+                    });
+                  },
+                ),
+              ),
+             
+              Text(" * "),
+              Expanded(
+                child: TextField(
+                  controller: add6Controller,
+                  decoration: InputDecoration(labelText: "Second Number"),
+                  onChanged: (value) {
+                    setState(() {
+                      secondAddNum = int.parse(value);
+                    });
+                  },
+                ),
+              ),
+
+              Text(' = $product   '),
+              
+              // 3.a Add an IconButton here
+              IconButton.outlined(
                 icon: Icon(Icons.clear),
                 onPressed: () {
                     setState(() {
-                      sum = firstAddNum * secondAddNum;
-                      operation = " * ";
+                      product = firstAddNum * secondAddNum;
                     });
                 } 
-              ),            
-          ] 
+              ),
+
+              // b.b Add an button here
+              TextButton(
+                style: TextButton.styleFrom(
+                  textStyle: const TextStyle(fontSize: 10),
+                ),
+                onPressed: () {
+                    setState(() {
+                      add5Controller.clear();
+                      add6Controller.clear();
+                      product = 0;
+                    });
+                }, 
+                child: Text("Clear Contents"),
+              ),              
+            ],
           ),
           // Division Row
-          Row (
-          children: [
-            Container (
-                padding: EdgeInsets.all(6.0), 
-               decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: Colors.white,
-                border: Border.all(color: Colors.black)
-               ),
-              child: 
-                TextButton(
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Expanded(
+                child: TextField(
+                  controller: add7Controller,
+                  decoration: InputDecoration(labelText: "First Number"),
+                  // update the firstAddNum state
+                  onChanged: (value) {
+                    setState(() {
+                      firstAddNum = int.parse(value);
+                    });
+                  },
+                ),
+              ),
+             
+              Text(" ÷ "),
+              Expanded(
+                child: TextField(
+                  controller: add8Controller,
+                  decoration: InputDecoration(labelText: "Second Number"),
+                  onChanged: (value) {
+                    setState(() {
+                      secondAddNum = int.parse(value);
+                    });
+                  },
+                ),
+              ),
+
+              Text(' = $quotient   '),
+              
+              // 3.a Add an IconButton here
+              TextButton(
                 style: TextButton.styleFrom(
                   textStyle: const TextStyle(fontSize: 20),
                 ),
                 onPressed: () {
                     setState(() {
-                      setState(() {
-                      sum = firstAddNum ~/ secondAddNum;
-                      operation = " / ";
-                    });
+                      
+                      quotient = firstAddNum ~/ secondAddNum;
+                      
+                    
                     });
                 }, 
-                child: Text("/"),
-              ), 
-              
-            ),         
-          ] 
+                child: Text("÷"),
+              ),
+
+              // b.b Add an button here
+              TextButton(
+                style: TextButton.styleFrom(
+                  textStyle: const TextStyle(fontSize: 10),
+                ),
+                onPressed: () {
+                    setState(() {
+                      add7Controller.clear();
+                      add8Controller.clear();
+                      quotient = 0;
+                    });
+                }, 
+                child: Text("Clear Contents"),
+              ),              
+            ],
           ),
         ],
       ),
